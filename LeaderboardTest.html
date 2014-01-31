@@ -1,0 +1,27 @@
+<head>
+  <title>Leaderboard Test</title>
+</head>
+
+<body>
+  <h1>Leaderboard Test</h1>
+  <p>
+    A test of integrating social network activity into a Meteor app.
+  </p>
+
+   {{loginButtons}}
+
+   <hr />
+
+   {{> feedReader }}
+
+</body>
+
+<template name="feedReader">
+  <button>Read feed</button>
+  <ul>
+  {{#each feedItems}}
+    <li>{{story}}</li>
+  {{/each}}
+  </ul>
+</template>
+
