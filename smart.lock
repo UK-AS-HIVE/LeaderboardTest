@@ -2,13 +2,25 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "npm": {}
+      "npm": {},
+      "accounts-linkblue": {},
+      "accounts-merge": {}
     },
     "packages": {
       "npm": {
         "git": "https://github.com/arunoda/meteor-npm.git",
         "tag": "v0.2.6",
         "commit": "177ab6118de5bf8cffb19481343d5762ff7a2aaf"
+      },
+      "accounts-linkblue": {
+        "git": "https://github.com/UK-AS-HIVE/meteor-accounts-linkblue.git",
+        "tag": "v0.1.4",
+        "commit": "cc3ce961249ae0e69d3f077b0f82602d0310c933"
+      },
+      "accounts-merge": {
+        "git": "https://github.com/lirbank/meteor-accounts-merge.git",
+        "tag": "v0.0.7",
+        "commit": "ae5c08bb1574858257291fa11982733e6e1937f0"
       }
     }
   }

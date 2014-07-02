@@ -8,20 +8,37 @@
     A test of integrating social network activity into a Meteor app.
   </p>
 
-   {{loginButtons}}
+  {{#if currentUser}}
+    <button id="sign-out-button">Sign out</button>
+    {{> linkAccounts}}
+  {{else}}
+    {{> linkblueLogin}}
+  {{/if}}
 
-   <hr />
+  {{#if currentUser.services.facebook}}
+    {{> feedReader}}
+  {{/if}}
 
-   {{> feedReader }}
+  {{#if currentUser.services.google}}
+    I see you are a GOOGLE user
+  {{/if}}
 
 </body>
 
+<template name="linkAccounts">
+  {{#if notLinkedWith 'facebook' }}
+    <button id="connect-account-facebook">Connect your Facebook</button>
+  {{/if}}
+</template>
+
 <template name="feedReader">
-  <button>Read feed</button>
-  <ul>
-  {{#each feedItems}}
-    <li>{{story}}</li>
-  {{/each}}
-  </ul>
+  <div>
+    <button>Read Facebook feed</button>
+    <ul>
+    {{#each feedItems}}
+      <li>{{story}}</li>
+    {{/each}}
+    </ul>
+  </div>
 </template>
 

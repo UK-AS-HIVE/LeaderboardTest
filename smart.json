@@ -1,5 +1,7 @@
 {
   "packages": {
-    "npm": {}
+    "npm": {},
+    "accounts-linkblue": {},
+    "accounts-merge": {}
   }
 }

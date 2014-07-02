@@ -6,8 +6,9 @@
 standard-app-packages
 autopublish
 insecure
-preserve-inputs
 coffeescript
 accounts-ui
 accounts-facebook
 npm
+accounts-linkblue
+accounts-merge
