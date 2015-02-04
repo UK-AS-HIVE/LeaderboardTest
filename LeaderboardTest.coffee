@@ -9,19 +9,20 @@ if Meteor.isClient
     'click #sign-out-button': ->
       Meteor.logout()
 
-  Template.linkAccounts.events
-    'click #connect-account-facebook': ->
-      console.log 'Connecting facebook account'
-      Meteor.signInWithFacebook {}, (error, mergedUserId) ->
+  Template.linkAccount.events
+    'click button': ->
+      console.log "Connecting #{this.service} account"
+      signInFunc = 'signInWith' + @service.substr(0,1).toUpperCase() + @service.substr(1)
+      Meteor[signInFunc] {}, (error, mergedUserId) ->
         if mergedUserId
           console.log mergedUserId, 'merged with', Meteor.userId()
         else
           console.log error
 
-  Template.linkAccounts.helpers
-    notLinkedWith: (service) ->
-      console.log 'checking if merged with ' + service
-      not Meteor.user().services[service]?
+  Template.linkAccount.helpers
+    notLinkedWith: ->
+      console.log 'checking if merged with ' + @service
+      not Meteor.user().services[@service]?
 
   Template.feedReader.events
     'click button': ->

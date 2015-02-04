@@ -12,6 +12,7 @@
     <button id="sign-out-button">Sign out</button>
     {{> linkAccounts}}
   {{else}}
+    {{> loginButtons}}
     {{> linkblueLogin}}
   {{/if}}
 
@@ -26,8 +27,14 @@
 </body>
 
 <template name="linkAccounts">
-  {{#if notLinkedWith 'facebook' }}
-    <button id="connect-account-facebook">Connect your Facebook</button>
+  {{> linkAccount service='facebook'}}
+  {{> linkAccount service='github'}}
+  {{> linkAccount service='asana'}}
+</template>
+
+<template name="linkAccount">
+  {{#if notLinkedWith service}}
+    <button id="connect-account-{{service}}">Connect your {{service}}</button>
   {{/if}}
 </template>
 
