@@ -36,6 +36,20 @@ if Meteor.isClient
   Template.feedReader.helpers
     feedItems: -> Session.get 'fbfeed'
 
+  Template.asanaReader.events
+    'click button': ->
+      console.log 'Reading Asana tasks...'
+      Meteor.call 'readAsana', (err, res) ->
+        console.log 'Done reading Asana tasks!'
+        console.log err
+        console.log res
+        Session.set 'asanaWorkspaces', res.data
+
+   Template.asanaReader.helpers
+     asanaWorkspaces: ->
+       Session.get 'asanaWorkspaces'
+
 if Meteor.isServer
   AccountsMerge.onMerge = (winner, loser) ->
-    Meteor.users.remove()
+    console.log "Merging accounts ", winner, loser
+    Meteor.users.remove(loser._id)

@@ -1,9 +1,9 @@
 <head>
-  <title>Leaderboard Test</title>
+  <title>ServiceConnectorDemo</title>
 </head>
 
 <body>
-  <h1>Leaderboard Test</h1>
+  <h1>ServiceConnectorDemo</h1>
   <p>
     A test of integrating social network activity into a Meteor app.
   </p>
@@ -24,6 +24,10 @@
     I see you are a GOOGLE user
   {{/if}}
 
+  {{#if currentUser.services.asana}}
+    {{> asanaReader}}
+  {{/if}}
+
 </body>
 
 <template name="linkAccounts">
@@ -35,6 +39,8 @@
 <template name="linkAccount">
   {{#if notLinkedWith service}}
     <button id="connect-account-{{service}}">Connect your {{service}}</button>
+  {{else}}
+    Linked to {{service}}!
   {{/if}}
 </template>
 
@@ -44,6 +50,17 @@
     <ul>
     {{#each feedItems}}
       <li>{{story}}</li>
+    {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="asanaReader">
+  <div>
+    <button>Read Asana workspaces</button>
+    <ul>
+    {{#each asanaWorkspaces}}
+      <li>{{name}}</li>
     {{/each}}
     </ul>
   </div>

@@ -33,6 +33,21 @@ Meteor.startup(function() {
       } else {
         return false;
       }
+    },
+    'readAsana': function() {
+      console.log('READING ASANA WORKSPACES');
+      if (Meteor.user().services.asana.accessToken) {
+        res = HTTP.get('https://app.asana.com/api/1.0/workspaces',
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer '+Meteor.user().services.asana.accessToken
+            }
+          });
+        return JSON.parse(res.content);
+      } else {
+        return false;
+      }
     }
   });
 });
