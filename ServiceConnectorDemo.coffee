@@ -45,9 +45,9 @@ if Meteor.isClient
         console.log res
         Session.set 'asanaWorkspaces', res.data
 
-   Template.asanaReader.helpers
-     asanaWorkspaces: ->
-       Session.get 'asanaWorkspaces'
+  Template.asanaReader.helpers
+    asanaWorkspaces: ->
+      Session.get 'asanaWorkspaces'
 
 if Meteor.isServer
   AccountsMerge.onMerge = (winner, loser) ->
